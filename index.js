@@ -9,9 +9,10 @@
 
   let streaming = false;
 
-  // The various HTML elements we need to configure or control. These
+  // The HTML camera elements will be set from here
   // will be set by the startup() function.
 
+  //Initializing a few variables that we'll be using to work with the camera and the api
   let video = null;
   let canvas = null;
   let photo = null;
@@ -20,9 +21,9 @@
   let compost = [];
   let compostCounter = 0;
   let recyclingCounter = 0;
-  //let garbageCounter = 0;
   recycling = ["Water bottle", "Bottle", "Plastic bottle", "Bottle cap", "Glass bottle", "Bagged packaged goods", "Packaged goods", "Plastic", "Bottled and jarred packaged goods", "Canned packaged goods", "Transparent material", "Paper", "Cardboard", "Glass", "Metal", "Aluminium", "Steel", "Tires", "Boxed packaged goods"]
   compost = ["Food", "Bread", "Diaper", "Plant", "Soil"]
+  //this function checks whether the camera is in it's proper position and not in a different window
   function showViewLiveResultButton() {
     if (window.self !== window.top) {
       // Ensure that if our document is in a frame, we get the user
@@ -42,11 +43,13 @@
     if (showViewLiveResultButton()) {
       return;
     }
+    //getting the information from the html page to the js file
     video = document.getElementById("video");
     canvas = document.getElementById("canvas");
     photo = document.getElementById("photo");
     startbutton = document.getElementById("startbutton");
 
+    //getting permission from the user to allow the site to use their camera
     navigator.mediaDevices
       .getUserMedia({ video: true, audio: false })
       .then((stream) => {
@@ -57,6 +60,7 @@
         console.error(`An error occurred: ${err}`);
       });
 
+      //adjusting the size of the camera
     video.addEventListener(
       "canplay",
       (ev) => {
@@ -76,7 +80,7 @@
       },
       false
     );
-
+      //if the take picture button is pressed, the take picture button is called, if not, then the clear photo function is called
     startbutton.addEventListener(
       "click",
       (ev) => {
@@ -92,6 +96,7 @@
   // Fill the photo with an indication that none has been
   // captured.
 
+  //clear photo resets the camera to the original position
   function clearphoto() {
     const context = canvas.getContext("2d");
     context.fillStyle = "#AAA";
@@ -107,6 +112,7 @@
   // drawing that to the screen, we can change its size and/or apply
   // other changes before drawing it.
 
+  //function freezes the camera and converts that frame into a data url, the data url is then used to display the picture and send it to the google vision api
   function takepicture() {
     const context = canvas.getContext("2d");
     if (width && height) {
@@ -145,6 +151,7 @@
       // var arrayCounter = 0;
       const objects = [];
 
+      //sends data url to the google vision api to detect objects in the image.
       fetch(`${visionApiUrl}?key=${apiKey}`, {
         method: 'POST',
         body: JSON.stringify(request),
@@ -170,16 +177,18 @@
             console.log(annotation.name);
             objects[i] = annotation.name;
           }
-
+          //puts the returned items into an array called objects
           var arrayCounter = 0;
           console.log("Objects: ", objects);
           arrayCounter = objects.length;
           console.log("Length of objects array: ", arrayCounter);
+          //creating arrays that have recycling and compost objects
           recycling = ["Water bottle", "Bottle", "Plastic bottle", "Bottle cap", "Glass bottle", "Bagged packaged goods", "Packaged goods", "Plastic", "Bottled and jarred packaged goods", "Canned packaged goods", "Transparent material", "Paper", "Cardboard", "Glass", "Metal", "Aluminium", "Steel", "Tires", "Boxed packaged goods"]
           compost = ["Food", "Bread", "Diaper", "Plant", "Soil"]
 
           console.log("Length of objects array: ", arrayCounter);
 
+          //check whether there is recycling or compost in the objects array
           for (let i = 0; i < arrayCounter; i++) {
             for (let j = 0; j < recycling.length; j++) {
               if (objects[i] == recycling[j]) {
@@ -193,6 +202,7 @@
             }
           }
 
+          //temp will represent the number of garbage items in the frame. Not really needed but it can tell the user how many items in the picture are garbage
           let temp = arrayCounter;
           console.log("temp: ", temp, " Objects.length: ", objects.length)
           temp = temp - recyclingCounter;
@@ -203,6 +213,7 @@
           var food = 0
           var packagedGoods = 0
 
+          //informing the user where the object in their picture goes based on what was in the picture
           if ((recyclingCounter > 0) && (compostCounter > 0)) {
             for (let i = 0; i < objects.length; i++) {
               if (objects[i] == 'Food') {
