@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="index.js"></script>
+    
+    <img src="logo.png" id="logo" alt="A description of the image" width="1425" height="1000">
+    <div class="contentarea">
+
+        <div class="camera">
+          <video id="video">Video stream not available.</video>
+          <button id="startbutton">Take photo</button>
+        </div>
+        <canvas id="canvas"> </canvas>
+        <div class="output">
+          <img id="photo" alt="The screen capture will appear in this box." />
+        </div>
+      </div>
+
+      <h1 id="results"></h1>
+
+
+
+      <div class="nav">
+          <ul>
+              <li class="nav-left"><a href="#">GRC Scanner</a></li>
+              <li><a href="#contact"><i class="fa fa-user"></i> Contact</a></li>
+              <li><a href="#login"><i class="fa fa-user"></i> Login</a></li>
+              <li><a href="#work"><i class="fa fa-th"></i> Work</a></li>
+              <li><a href="#about"><i class="fa fa-envelope"></i> About</a></li>
+          </ul>
+      </div>
+  
+      <!-- About section -->
+      <div class="section" id="about">
+          <h1 id="main">ABOUT THE COMPANY</h1>
+          <p id="writing"> About our Company </p>
+  
+          <!-- Grid container -->
+          <div class="grid">
+              <!-- Grid items -->
+              <div class="grid-item">
+                  <i class="fa fa-desktop w3-margin-bottom w3-jumbo w3-center w3-large"></i>
+                  <h2 id="subHeadings">Responsive</h2>
+                  <p id="writing"> Our company is responsive to customer needs and offers excellent customer service. We
+                      also have a responsive website design, ensuring our content and services are easily accessible on
+                      any device. Being responsive is crucial for building trust with our customers.</p>
+              </div>
+              <div class="grid-item">
+                  <i class="fa fa-heart w3-margin-bottom w3-jumbo"></i>
+                  <h2 id="subHeadings">Compassion</h2>
+                  <p id="writing"> Our company prioritizes compassion for all stakeholders and has a commitment to social
+                      responsibility. It is a core value that guides our actions. Compassion is a core value that guides
+                      our actions and decisions.</p>
+              </div>
+              <div class="grid-item">
+                  <i class="fa fa-diamond w3-margin-bottom w3-jumbo"></i>
+                  <h2 id="subHeadings">Design</h2>
+                  <p id="writing"> Our company website design is visually appealing, easy to navigate, and user-friendly.
+                      It is responsive and effectively conveys our message and values to our customers.</p>
+              </div>
+              <div class="grid-item">
+                  <i class="fa fa-cog w3-margin-bottom w3-jumbo"></i>
+                  <h2 id="subHeadings">Support</h2>
+                  <p id="writing"> Our company provides great support through a dedicated and knowledgeable team, multiple
+                      support channels, and a comprehensive knowledge base. We are committed to ensuring our customers
+                      have a positive experience.</p>
+              </div>
+          </div>
+      </div>
+  
+      <!-- Work section -->
+      <div class="section" id="work">
+          <h1 id="main">WORK</h1>
+          <p id="writing"> Our program works by allowing users to take a picture of a disposable item using their phone or
+              other device. Once the picture is taken, the program analyzes the item and returns a result indicating
+              whether it belongs in the recycling, compost, or garbage. To use the program, users simply need to launch
+              the app and take a picture of the item in question. The program will then process the image and provide the
+              user with the appropriate disposal recommendation. This helps users to properly dispose of their waste and
+              reduce the amount of incorrect disposal, which can have negative environmental impacts. The program is easy
+              to use and provides a convenient way for users to ensure that they are disposing of their waste in an
+              environmentally responsible manner.</p>
+  
+          <img src="photo.png" id="logo" alt="A description of the image" class="center" width="750" height="500">
+      </div>
+  
+  
+      <!--LOGIN -->
+      <div class="section" id="login">
+          <h1 id="main">LOGIN</h1>
+          <p id="writing">Sign up today to start using our free program!</p>
+  
+          <a href="signup.html" id="writing">Sign up for free!</a>
+          <a href="login.html" id="writing">Go to the Login Page</a>
+      </div>
+  
+      <!-- Contact section -->
+      <div class="section" id="contact">
+          <h1 id="main">CONTACT</h1>
+          <p id="writing"> Let's get in touch. Send us a message and if you have time, please fill out the google form to
+              give us feedback!</p>
+  
+          <p><i class="fa fa-map-marker fa-fw w3-xxlarge w3-margin-right"></i> Brampton, Ontario, Canada</p>
+          <p><i class="fa fa-phone fa-fw w3-xxlarge w3-margin-right"></i> Phone: 905-950-0901</p>
+          <p><i class="fa fa-envelope fa-fw w3-xxlarge w3-margin-right"> </i> Email: grc_scanner@gmail.com</p>
+          <i class="fa fa-envelope fa-fw w3-xxlarge w3-margin-right"> </i> <a href="https://forms.gle/1jQTamfUtF1GyKx57"
+              id="writing">Google Forum Link</a>
+      </div>
+  
+      <img src="environment.jpeg" id="logo" alt="Environment" class="center" width="1425" height="750">
+  
+  
+<style>
+      .nav {
+        position: fixed;
+        top: 0;
+        width: 100%;
+    }
+
+    .nav-left {
+        float: left;
+        font-size: larger;
+        font-weight: bold;
+        font-family: "Raleway", sans-serif;
+
+    }
+
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: white;
+    }
+
+    li {
+        float: right;
+        height: 54px;
+    }
+
+    li a {
+        display: block;
+        color: black;
+        text-align: center;
+        padding: 18px 18px;
+        text-decoration: none;
+        font-family: "Raleway", sans-serif;
+    }
+
+    li a:hover {
+        background-color: white;
+    }
+
+    .section {
+        padding: 50px 0;
+        text-align: center;
+    }
+
+    #main {
+        font-family: "Raleway", sans-serif;
+        font-weight: bold;
+        font-size: 30px;
+        text-align: center;
+    }
+
+    #subHeadings {
+        font-family: "Raleway", sans-serif;
+        font-weight: bold;
+        font-size: 20px;
+        text-align: center;
+    }
+
+    #writing {
+        font-family: "Raleway", sans-serif;
+        font-size: 16px;
+    }
+
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        /* create a grid with 4 columns, each taking up 1 fraction of the available space */
+        grid-gap: 20px;
+        /* add a gap between the grid items */
+    }
+
+    .grid-item {
+        background-color: white;
+        /* add a white background color to the grid items */
+        text-align: center;
+        /* center the text within the grid items */
+        padding: 20px;
+        /* add some padding to the grid items */
+    }
+  #video {
+  border: 1px solid black;
+  box-shadow: 2px 2px 3px black;
+  width: 500px;
+  height: 400px;
+}
+
+#photo {
+  border: 1px solid black;
+  box-shadow: 2px 2px 3px black;
+  width: 500px;
+  height: 400px;
+}
+
+#canvas {
+  display: none;
+}
+
+.camera {
+  width: 500px;
+  display: inline-block;
+}
+
+.output {
+  width: 500px;
+  display: inline-block;
+  vertical-align: top;
+}
+
+#startbutton {
+  display: block;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  bottom: 32px;
+  background-color: rgba(0, 150, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  box-shadow: 0px 0px 1px 2px rgba(0, 0, 0, 0.2);
+  font-size: 14px;
+  font-family: "Lucida Grande", "Arial", sans-serif;
+  color: rgba(255, 255, 255, 1);
+}
+
+.contentarea {
+  font-size: 16px;
+  font-family: "Lucida Grande", "Arial", sans-serif;
+  width: 760px;
+}
+</style>
+</body>
+</html>
